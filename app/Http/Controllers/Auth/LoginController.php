@@ -49,16 +49,12 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-
-
         return view('auth.login', ['url' => 'admin']);
     }
 
 
     public function adminLogin(Request $request)
     {
-
-
 
         $this->validate($request, [
             'email'   => 'required|email',
