@@ -21,11 +21,14 @@ class CreateWarehousesTable extends Migration
             $table->string('owner', 200)->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('phone', 20)->nullable();
+            //  $table->integer('regional_id')->unsigned()->nullable();
+            //   $table->foreign('regional_id')->references('id')->on('regionals')->onDelete('set null');
+
             $table->timestamps();
         });
     }
 
-    /**
+    /**drop
      * Reverse the migrations.
      *
      * @return void

@@ -18,8 +18,8 @@ class HomeController extends Controller
     {
 
         echo "buceta";
-        die();
-        $this->middleware('auth');
+        // die();
+        // $this->middleware('auth');
         // $this->middleware('guest')->except('logout');
         //$this->middleware('guest:admin')->except('logout');
         //$this->middleware('guest:writer')->except('logout');
@@ -41,20 +41,25 @@ class HomeController extends Controller
         echo "oi";
         // return view('home');
 
-        $writer = Writer::find(1);
+        $writer = User::find(5);
+
+
+
         $local = Warehouse::create(
             [
-                'name' => 'surcen',
+                'name' => 'surpla',
                 'room' => 'central',
                 'block' => 'central',
                 'owner' => 'evandro',
-                'email' => 'ebolzann@gmail.com',
+                'email' => 'pituca2@gmail.com',
                 'phone' => '555555',
             ]
         );
 
+        //$local->created_at = Carbon::now();
+
         echo $local->id;
 
-        $local->writers()->attach($writer);
+        $local->users()->attach($writer);
     }
 }

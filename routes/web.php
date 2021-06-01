@@ -12,7 +12,9 @@ Route::post('/login/writer', 'Auth\LoginController@writerLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('register.admin');
 Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
 
-Route::view('/home', 'home')->middleware('auth');
+//Route::view('/home', 'home')->middleware('auth');
+
+Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin');
 });
@@ -20,3 +22,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
 Route::group(['middleware' => 'auth:writer'], function () {
     Route::view('/writer', 'writer');
 });
+
+
+//others tables
+
+Route::resource('regionals', 'RegionalController');

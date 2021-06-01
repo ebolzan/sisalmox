@@ -45,14 +45,62 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Regular link</a></li>
-                        <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a></li>
-                        <li><a class="dropdown-item" href="#">Another link</a></li>
-                      </ul>
+
+                    <div class="row">
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2> Regional</h2>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-primary" href="{{ route('regionals.index') }}"> voltar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Nome:</strong>
+                                {{ $regional->name }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Cidade:</strong>
+                                {{ $regional->city }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Endereço:</strong>
+                                {{ $regional->address }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Contato referência:</strong>
+                                {{ $regional->local_reference }}
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Observações:</strong>
+                                {{ $regional->observations }}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+
+
+
