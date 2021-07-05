@@ -26,4 +26,7 @@ Route::group(['middleware' => 'auth:writer'], function () {
 
 //others tables
 
-Route::resource('regionals', 'RegionalController');
+Route::resource('regionais', 'RegionalController', ['parameters' => ['regionais' => 'regional']]);
+//Route::resource('regionals', 'RegionalController', ['parameters' => ['regionais' => 'regionals']]);
+
+Route::resource('almoxarifados', 'WarehouseController', ['parameters' => ['almoxarifados' => 'warehouse']]);

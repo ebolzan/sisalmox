@@ -9,6 +9,19 @@ class Warehouse extends Model
 
     protected $guarded = [];
 
+    public static $requiredFields = [
+        'name' => 'required',
+        'room' => 'required',
+        'block' => 'required',
+        'email' => 'email',
+    ];
+
+
+    public static $niceNames = [
+        'name' => 'Nome', 'room' => 'Sala', 'block' => 'Prédio', 'owner' => 'Endereço ou email do responsável',
+        'email' => 'E-mail', 'phone' => 'Telefone'
+    ];
+
     public $timestamps = true;
 
     public function writers()

@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Regional;
 use App\Warehouse;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
-class RegionalController extends Controller
+class WarehouseController extends Controller
 {
 
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +23,9 @@ class RegionalController extends Controller
      */
     public function index()
     {
-        $regionals = Regional::latest()->paginate(5);
+        $warehouses = Warehouse::latest()->paginate(5);
 
-        return view('regionals.index', compact('regionals'))
+        return view('warehouses.index', compact('warehouses'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -36,7 +36,8 @@ class RegionalController extends Controller
      */
     public function create()
     {
-        return view('regionals.create');
+        $regionais = Regional::all();
+        return view('warehouses.create', compact('regionais'));
     }
 
     /**
@@ -47,70 +48,75 @@ class RegionalController extends Controller
      */
     public function store(Request $request)
     {
-        $validation =  Validator::make($request->all(), Regional::$requiredFields, [], Regional::$niceNames);
+        $validation =  Validator::make($request->all(), Warehouse::$requiredFields, [], Warehouse::$niceNames);
 
         if ($validation->fails())
             return redirect()->back()->withErrors($validation)->withInput();
 
-        Regional::create($request->all());
-        $msn = "Regional criada com sucesso";
-        return redirect()->route('regionais.index')
+
+
+        $name = 'evandro';
+
+        Warehouse::create($request->all());
+        $msn = "Almoxarifado criado com sucesso";
+        return redirect()->route('almoxarifados.index')
             ->with('success', $msn);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Regional  $regional
+     * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function show(Regional $regional)
+    public function show(Warehouse $warehouse)
     {
-        return view('regionals.show', compact('regional'));
+        return view('warehouses.show', compact('warehouse'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Regional  $regional
+     * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Regional $regional)
+    public function edit(Warehouse $warehouse)
     {
-        return view('regionals.edit', compact('regional'));
+        return view('warehouses.edit', compact('warehouse'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Regional  $regional
+     * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Regional $regional)
+    public function update(Request $request, Warehouse $warehouse)
     {
-        $validation =  Validator::make($request->all(), Regional::$requiredFields, [], Regional::$niceNames);
+        $validation =  Validator::make($request->all(), Warehouse::$requiredFields, [], Warehouse::$niceNames);
 
         if ($validation->fails())
             return redirect()->back()->withErrors($validation)->withInput();
 
-        $regional->update($request->all());
 
-        return redirect()->route('regionais.index')
-            ->with('success', 'Regional updated successfully');
+        $warehouse->update($request->all());
+
+        return redirect()->route('almoxarifados.index')
+            ->with('success', 'Almoxarifado updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Regional  $regional
+     * @param  \App\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Regional $regional)
+    public function destroy(Warehouse $warehouse)
     {
-        $regional->delete();
+        $warehouse->delete();
 
-        return redirect()->route('regionais.index')
-            ->with('success', 'Regional deleted successfully');
+        return redirect()->route('almoxarifados.index')
+            ->with('success', 'Almoxarifado deleted successfully');
     }
 }

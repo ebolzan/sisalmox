@@ -1,14 +1,15 @@
 @extends('admin')
-
 @section('content')
+
+
 
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
                             <div class="pull-left">
-                                <h2>Editar regional</h2>
+                                <h2>Visualização almoxarifado</h2>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-primary" href="{{ route('regionais.index') }}"> voltar</a>
+                                <a class="btn btn-primary" href="{{ route('almoxarifados.index') }}"> voltar</a>
                             </div>
                         </div>
                     </div>
@@ -24,47 +25,44 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('regionais.update',$regional->id) }}" method="POST">
+                    <form action="{{ route('almoxarifados.update', $warehouse->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
                          <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Nome:</strong>
-                                    <input type="text" name="name" value="{{ old('name',$regional->name) }}" class="form-control" placeholder="Name">
+                                    <strong>Nome:</strong> {{ $warehouse->name }}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Cidade:</strong>
-                                    <input type="text" class="form-control"  name="city" placeholder="Detail" value="{{ old('city',$regional->city) }}">
+                                    <strong>Sala:</strong> {{ $warehouse->room }}
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Endereço:</strong>
-                                    <input type="text" name="address" value="{{ old('address',$regional->address) }}" class="form-control" placeholder="Name">
+                                    <strong>Prédio:</strong> {{ $warehouse->block }}
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Contato referência:</strong>
-                                    <input type="text" name="local_reference" value="{{ old('local_reference',$regional->local_reference) }}" class="form-control" placeholder="Name">
+                                    <strong>Quem tem a chave:</strong> {{ $warehouse->owner }}
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Observações:</strong>
-                                    <textarea style="height:150px" name="observations" class="form-control" placeholder="Name"> {{ old('observations',$regional->observations) }}</textarea>
+                                    <strong>Email oficial:</strong> {{ $warehouse->email }}
                                 </div>
                             </div>
 
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                              <button type="submit" class="btn btn-primary">Enviar</button>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Telefone:</strong> {{ $warehouse->phone }}
+                                </div>
                             </div>
                         </div>
 
