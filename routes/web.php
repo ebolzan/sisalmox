@@ -30,3 +30,6 @@ Route::resource('regionais', 'RegionalController', ['parameters' => ['regionais'
 //Route::resource('regionals', 'RegionalController', ['parameters' => ['regionais' => 'regionals']]);
 
 Route::resource('almoxarifados', 'WarehouseController', ['parameters' => ['almoxarifados' => 'warehouse']]);
+
+
+Route::resource('itens', 'ItemController', ['parameters' => ['itens' => 'item']]);

@@ -41,25 +41,5 @@ class HomeController extends Controller
         echo "oi";
         // return view('home');
 
-        $writer = User::find(5);
-
-
-
-        $local = Warehouse::create(
-            [
-                'name' => 'surpla',
-                'room' => 'central',
-                'block' => 'central',
-                'owner' => 'evandro',
-                'email' => 'pituca2@gmail.com',
-                'phone' => '555555',
-            ]
-        );
-
-        //$local->created_at = Carbon::now();
-
-        echo $local->id;
-
-        $local->users()->attach($writer);
     }
 }
